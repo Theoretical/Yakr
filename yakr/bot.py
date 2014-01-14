@@ -59,7 +59,7 @@ class Bot(object):
         self.net_write.put("NICK " + self.nick)
         self.net_write.put("USER {} localhost localhost :{}"
             .format(self.nick, self.real_name))
-        self.net_write.put("PASSWORD " + self.password)
+        self.net_write.put("PASS " + self.password)
         self.running = True
         while self.running:
             readable, _, _ = select(self.get_readables(), [], [], 1)
