@@ -16,6 +16,7 @@ class Bot(object):
         self.ready = False
         self.nick = "Dot"
         self.real_name = "Dot the bot"
+        self.password = ""
         self.plugin_map = {}
         self.output_listeners = []
         self.running = False
@@ -58,6 +59,7 @@ class Bot(object):
         self.net_write.put("NICK " + self.nick)
         self.net_write.put("USER {} localhost localhost :{}"
             .format(self.nick, self.real_name))
+        self.net_write.put("PASSWORD " + self.password)
         self.running = True
         while self.running:
             readable, _, _ = select(self.get_readables(), [], [], 1)

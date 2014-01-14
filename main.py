@@ -45,6 +45,7 @@ connect_host = config.get("connection.host", False)
 connect_port = config.get("connection.port", False)
 nick = config.get("bot.nick", False)
 name = config.get("bot.name", "Unnamed bot")
+password = config.get("bot.password", "")
 if [connect_host, connect_port, nick].count(False):
     print "Minimum requirements for a config file:"
     print "[connection]"
@@ -80,6 +81,7 @@ else:
 
 b = Bot(net)
 b.nick = nick
+b.password = password
 b.real_name = name
 map(b.load, plugins)
 b.run()
